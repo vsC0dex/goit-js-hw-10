@@ -4,11 +4,8 @@ import markup from './templates/markup.hbs';
 import severalCountriesMarkup from './templates/severalCountriesMarkup.hbs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import debounce from 'lodash.debounce';
-// import { useDebounce } from 'use-debounce';
 
 // console.log(debounce);
-
-// var debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
 // const list = document.querySelector('.country-list')
@@ -24,8 +21,6 @@ const refs = {
 
 // console.log('asdasdsa');
 
-const inputValue = refs.input.value;
-
 const onSearch = e => {
   const searchValue = e.target.value;
   refs.list.innerHTML = '';
@@ -35,10 +30,7 @@ const onSearch = e => {
       .catch(() => {
         Notify.failure('Oops, there is no country with that name');
       });
-
-    console.log(refs.input.value);
   }
-  console.log(refs.input.value);
 };
 
 const onSearchDebounced = debounce(onSearch, DEBOUNCE_DELAY);
@@ -66,3 +58,5 @@ function updateTemplate(data) {
   });
   refs.list.insertAdjacentHTML('beforeend', markup(templateData));
 }
+
+console.log('asdas');
